@@ -1,49 +1,49 @@
-<!DOCTYPE html>
+<?php
+
+include_once "objetos/AlunoControler.php";
+
+$controller = new AlunoControler();
+$alunos = $controller->index();
+global $alunos;
+
+?>
+
+<!doctype html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revisão PHP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Senac Rio Claro</title>
 </head>
 <body>
-<h1>Revisão PHP</h1>
+
+<h1>Senac Rio Claro</h1>
+<h2>Alunos Cadastrados</h2>
+
+<table>
+    <tr>
+        <td>RA</td>
+        <td>Nome</td>
+        <td>EMail</td>
+        <td>Telefone</td>
+        <td>Login</td>
+    </tr>
+    <?php if($alunos):?>
+    <?php foreach($alunos as $aluno):?>
+    <tr>
+        <td><?php echo $aluno->id; ?></td>
+        <td><?php echo $aluno->nome;?></td>
+        <td><?php echo $aluno->email;?></td>
+        <td><?php echo $aluno->telefone;?></td>
+        <td><?php echo $aluno->login;?></td>
+    </tr>
+    <?php endforeach;?>
+    <?php endif;?>
 
 
 
+</table>
 
-<form action="formulario.php" method="post">
-    <label for="">Nome</label>
-    <input type="text" name="nome">
-    <label for="">E-mail</label>
-    <input type="text" name="email">
-    <label for="">Telefone</label>
-    <input type="text" name="telefone">
-    <button>Cadastrar</button>
-
-    <br>
-    <br>
-
-    <label for="curso">Cursos:</label>
-    <select name="curso" id="curso">
-        <option value="Técnico em Informática">Técnico em Informática</option>
-        <option value="Técnico em Computação Grafica">Técnico em Computação Grafica</option>
-        <option value="Técnico em Design Grafico">Técnico em Design Grafico</option>
-    </select>
-
-    <br>
-    <br>
-    <input type="checkbox" id="periodo1" name="periodo[]" value="manha">
-    <label for="periodo1"> Manha</label><br>
-    <input type="checkbox" id="periodo2" name="periodo[]" value="tarde">
-    <label for="periodo2"> Tarde</label><br>
-    <input type="checkbox" id="periodo3" name="periodo[]" value="noite">
-    <label for="periodo3"> Noite</label><br>
-    <input type="checkbox" id="periodo3" name="periodo[]" value="Sabado (manhã)">
-    <label for="periodo3"> Sabado (manhã)</label><br>
-
-
-
-</form>
 
 </body>
 </html>

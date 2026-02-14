@@ -1,5 +1,5 @@
 <?php
-Class Aluno{
+Class Produto{
     public $id;
     public $nome;
     public $descricao;

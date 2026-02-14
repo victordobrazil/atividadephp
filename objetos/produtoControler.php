@@ -6,18 +6,18 @@ include_once "produtos.php";
 class produtoControler{
 
     private $bd;
-    private $aluno;
+    private $Produto;
 
     public function __construct(){
 
         $banco =new Database();
         $this->bd=$banco->conectar();
-        $this->aluno=new Aluno($this->bd);
+        $this->Produto=new Produto($this->bd);
 
     }
     public function index(){
 
-        return $this->aluno->lerTodos();
+        return $this->Produto->lerTodos();
 
     }
 }

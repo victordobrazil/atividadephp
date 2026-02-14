@@ -16,7 +16,7 @@ global $produtos;
     <title>Senac Rio Claro</title>
     <style>
         table,tr,td{
-            border: 1px solid black;
+            border: 2px solid black;
             border-collapse: collapse;
 
         }
@@ -36,7 +36,7 @@ global $produtos;
         <td>quantidade</td>
     </tr>
     <?php if($produtos):?>
-    <?php foreach($produtos as $produtos):?>
+    <?php foreach($produtos as $produto):?>
     <tr>
         <td><?php echo $produtos->id; ?></td>
         <td><?php echo $produtos->nome;?></td>

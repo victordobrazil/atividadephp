@@ -14,8 +14,8 @@ Class Aluno{
     }
 
     public function lerTodos(){
-        $sql = "SELECT * FROM alunos";
-        $resultado = $this->bd->query($sql);
+        $sql = "SELECT * FROM alunos where RA = :RA";
+        $resultado->bindparam(":RA", $this->ra);
         $resultado->execute();
 
         return $resultado->fetchAll(PDO::FETCH_OBJ);

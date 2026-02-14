@@ -20,4 +20,12 @@ class AlunoControler{
         return $this->aluno->lerTodos();
 
     }
+    public function pesquisaAluno(){
+        $sql = "SELECT * FROM RA";
+        $resultado = $this->bd->query($sql);
+        $resultado->execute();
+
+        return $resultado->fetchAll(PDO::FETCH_OBJ);
+
+    }
 }

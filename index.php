@@ -1,49 +1,49 @@
-<!DOCTYPE html>
+<?php
+
+include_once "objetos/produtoControler.php";
+
+$controller = new produtoControler();
+$produtos = $controller->index();
+global $produtos;
+
+?>
+
+<!doctype html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revisão PHP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Senac Rio Claro</title>
 </head>
 <body>
-<h1>Revisão PHP</h1>
+
+<h1>Mercado preso</h1>
+<h2>Produtos:</h2>
+
+<table>
+    <tr>
+        <td>id</td>
+        <td>nome</td>
+        <td>descricao</td>
+        <td>preco</td>
+        <td>quantidade</td>
+    </tr>
+    <?php if($produtos):?>
+    <?php foreach($produtos as $produtos):?>
+    <tr>
+        <td><?php echo $produtos->id; ?></td>
+        <td><?php echo $produtos->nome;?></td>
+        <td><?php echo $produtos->descricao;?></td>
+        <td><?php echo $produtos->preco;?></td>
+        <td><?php echo $produtos->quantidade;?></td>
+    </tr>
+    <?php endforeach;?>
+    <?php endif;?>
 
 
 
+</table>
 
-<form action="formulario.php" method="post">
-    <label for="">Nome</label>
-    <input type="text" name="nome">
-    <label for="">E-mail</label>
-    <input type="text" name="email">
-    <label for="">Telefone</label>
-    <input type="text" name="telefone">
-    <button>Cadastrar</button>
-
-    <br>
-    <br>
-
-    <label for="curso">Cursos:</label>
-    <select name="curso" id="curso">
-        <option value="Técnico em Informática">Técnico em Informática</option>
-        <option value="Técnico em Computação Grafica">Técnico em Computação Grafica</option>
-        <option value="Técnico em Design Grafico">Técnico em Design Grafico</option>
-    </select>
-
-    <br>
-    <br>
-    <input type="checkbox" id="periodo1" name="periodo[]" value="manha">
-    <label for="periodo1"> Manha</label><br>
-    <input type="checkbox" id="periodo2" name="periodo[]" value="tarde">
-    <label for="periodo2"> Tarde</label><br>
-    <input type="checkbox" id="periodo3" name="periodo[]" value="noite">
-    <label for="periodo3"> Noite</label><br>
-    <input type="checkbox" id="periodo3" name="periodo[]" value="Sabado (manhã)">
-    <label for="periodo3"> Sabado (manhã)</label><br>
-
-
-
-</form>
 
 </body>
 </html>

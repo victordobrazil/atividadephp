@@ -1,9 +1,9 @@
 <?php
 include_once "config/database.php";
-include_once "aluno.php";
+include_once "produtos.php";
 
 
-class AlunoControler{
+class produtoControler{
 
     private $bd;
     private $aluno;

@@ -36,7 +36,7 @@ global $produtos;
         <td>quantidade</td>
     </tr>
     <?php if($produtos):?>
-    <?php foreach($produtos as $produto):?>
+    <?php foreach($produtos as $produtos):?>
     <tr>
         <td><?php echo $produtos->id; ?></td>
         <td><?php echo $produtos->nome;?></td>

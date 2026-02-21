@@ -16,16 +16,27 @@ class AlunoControler{
 
     }
     public function index(){
+        return $this->aluno->LerTodos();
+    }
+    public function pesquisaAluno($ra){
+        return $this->aluno->PesquisaAluno($ra);
+    }
+    public function cadastrarAluno($dados){
 
-        return $this->aluno->lerTodos();
+        $this->aluno->nome=$dados["nome"];
+        $this->aluno->email=$dados["email"];
+        $this->aluno->senha=$dados["senha"];
+        $this->aluno->endereco=$dados["endereco"];
+        $this->aluno->telefone=$dados["telefone"];
+        $this->aluno->login=$dados["login"];
+
+        if($this->aluno->Cadastrar()){
+            header("location:index.php");
+        } else {
+            return false;
+        }
+
 
     }
-    public function pesquisaAluno(){
-        $sql = "SELECT * FROM RA";
-        $resultado = $this->bd->query($sql);
-        $resultado->execute();
 
-        return $resultado->fetchAll(PDO::FETCH_OBJ);
-
-    }
 }

@@ -32,11 +32,36 @@ class AlunoControler{
 
         if($this->aluno->Cadastrar()){
             header("location:index.php");
-        } else {
+        }else {
             return false;
         }
 
 
+    }
+    public function excluirAluno($id){
+        $this->aluno->id = $id;
+
+        if($this->aluno->excluir()){
+            header("location:index.php");
+        }
+
+    }
+    public function atualizarAluno($dados){
+
+        $this->aluno->id = $dados["id"];
+        $this->aluno->nome=$dados["nome"];
+        $this->aluno->email=$dados["email"];
+        $this->aluno->senha=$dados["senha"];
+        $this->aluno->telefone=$dados["telefone"];
+        $this->aluno->login=$dados["login"];
+
+        if($this->aluno->Atualizar()){
+            header("location:index.php");
+        }
+    }
+
+    public function localizarAluno($id){
+        return $this->aluno->buscaAluno($id);
     }
 
 }

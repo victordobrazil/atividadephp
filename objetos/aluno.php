@@ -47,6 +47,47 @@ Class Aluno{
             return false;
         }
 
+
+    }
+    public function excluir(){
+        $sql = "DELETE FROM alunos WHERE id = :id";
+        $stmt = $this->bd->prepare($sql);
+        $stmt->bindParam(":id", $this->id, PDO::PARAM_INT);
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function atualizar(){
+        $senha_hash = password_hash($this->senha, PASSWORD_DEFAULT);
+        $sql = "UPDATE alunos SET senha = :senha WHERE id = :id";
+        $stmt = $this->bd->prepare($sql);
+        $stmt->bindParam(":nome", $this->nome, PDO::PARAM_STR);
+        $stmt->bindParam(":email", $this->email, PDO::PARAM_STR);
+        $stmt->bindParam(":senha", $senha_hash, PDO::PARAM_STR);
+        $stmt->bindParam(":telefone", $this->telefone, PDO::PARAM_STR);
+        $stmt->bindParam(":login", $this->login, PDO::PARAM_STR);
+        $stmt->bindParam(":id", $this->id, PDO::PARAM_STR);
+
+        if($stmt->execute()){
+            return true;
+        } else {
+            return false;
+        }
+
+
+
+    }
+
+
+    public function buscaAluno($id){
+        $sql = "SELECT * FROM alunos WHERE id = :id";
+        $resultado = $this->bd->prepare($sql);
+        $resultado->bindParam(":id", $id, PDO::PARAM_INT);
+        $resultado->execute();
+
+        return $resultado->fetch(PDO::FETCH_OBJ);
     }
 
 }

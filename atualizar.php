@@ -1,52 +1,41 @@
 <?php
-
 include_once("objetos/AlunoControler.php");
 
 $controller = new AlunoControler();
 
-if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["alterar"])){
+if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["alterar"])) {
     $a = $controller->localizarAluno($_GET["alterar"]);
-
-
-}elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["aluno"])){
+} elseif ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["aluno"])) {
     $a = $controller->atualizarAluno($_POST["aluno"]);
-}else{
+} else {
     header("Location: index.php");
 }
 
-
 ?>
-
-
 
 <!doctype html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>atualizar  alunos</title>
+    <title>Atualização de Produto</title>
 </head>
 <body>
-
-<h1>Atualiza alunos</h1>
+<h1>Atualização de Produto</h1>
 <a href="index.php">Voltar</a>
 
 <form action="atualizar.php" method="post">
-    <input type="text" name="aluno[id]" value="<?= $a->id ?>" hidden>
+    <input type="text" name="produto[id]" value="<?= $a->id ?> " hidden>
     <label>Nome</label>
-    <input type="text" name="aluno[nome]" value="<?= $a->nome ?>"><br><br>
-    <label>E-mail</label>
-    <input type="text" name="aluno[email]" value="<?= $a->email ?>"><br><br>
-    <label>Telefone</label>
-    <input type="text" name="aluno[telefone]" value="<?= $a->telefone ?>"><br><br>
-    <label>Login</label>
-    <input type="text" name="aluno[login]" value="<?= $a->login ?>"><br><br>
-    <label>Senha</label>
-    <input type="text" name="aluno[senha] "value="<?= $a->senha ?>"><br><br>
+    <input type="text" name="produto[nome]" value="<?= $a->nome ?> "><br><br>
+    <label>Descrição</label>
+    <input type="text" name="produto[descricao]" value="<?= $a->descricao ?> "><br><br>
+    <label>Quantidade</label>
+    <input type="text" name="produto[quantidade]" value="<?= $a->quantidade ?> "><br><br>
+    <label>Preço</label>
+    <input type="text" name= produto[preco]" value="<?= $a->preco ?> "><br><br>
 
     <button name="atualizar">Atualizar</button>
-
-
 </form>
 
 </body>

@@ -17,6 +17,11 @@ if($_SERVER["REQUEST_METHOD"] === "GET"){
         $a = $controller->excluirAluno($_GET["excluir"]);
     }
 }
+if($_SERVER["REQUEST_METHOD"] === "GET"){
+    if(isset($_GET["atualizar"])){
+        $a = $controller->atualizarAluno($_GET["atualizar"]);
+    }
+}
 
 ?>
 
@@ -70,21 +75,29 @@ if($_SERVER["REQUEST_METHOD"] === "GET"){
         <td>E-mail</td>
         <td>Telefone</td>
         <td>Login</td>
+        <td>Foto</td>
+        <td>Ações</td>
     </tr>
     <?php if($alunos) : ?>
         <?php foreach($alunos as $aluno) : ?>
             <tr>
-                <td><?php echo $aluno->id;?></td>
-                <td><?php echo $aluno->nome;?></td>
-                <td><?php echo $aluno->email;?></td>
-                <td><?php echo $aluno->telefone;?></td>
-                <td><?php echo $aluno->login;?></td>
-                <td><a href="atualizar.php?alterar=<?= $aluno->id ?>">Alterar</a> </td>
-                <td><a href="index.php?excluir=<?= $aluno->id ?>">Excluir</a> </td>
+                <td><?= $aluno->id ?></td>
+                <td><?= $aluno->nome ?></td>
+                <td><?= $aluno->email ?></td>
+                <td><?= $aluno->telefone ?></td>
+                <td><?= $aluno->login ?></td>
+                <td>
+                    <?php if(!empty($aluno->imagem)): ?>
+                        <img style="width: 20%;" src="uploads/<?= $aluno->imagem ?>"> <!-- ✅ tag fechada -->
+                    <?php else: ?>
+                        <img style="width: 20%;" src="image-fail.jpg"> <!-- ✅ fallback -->
+                    <?php endif; ?>
+                </td>
+                <td><a href="atualizar.php?alterar=<?= $aluno->id ?>">Alterar</a></td>
+                <td><a href="index.php?excluir=<?= $aluno->id ?>">Excluir</a></td>
             </tr>
         <?php endforeach; ?>
     <?php endif; ?>
-
 </table>
 
 </body>

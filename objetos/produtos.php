@@ -1,10 +1,12 @@
 <?php
 Class Aluno{
-    public $id;
+    public $ra;
     public $nome;
-    public $descricao;
-    public $preco;
-    public $quantidade;
+    public $email;
+    public $telefone;
+    public $login;
+    public $senha;
+    public $img;
     private $bd;
 
     public function __construct($bd){
@@ -12,7 +14,7 @@ Class Aluno{
     }
 
     public function lerTodos(){
-        $sql = "SELECT * FROM produtos";
+        $sql = "SELECT * FROM alunos";
         $resultado = $this->bd->query($sql);
         $resultado->execute();
 

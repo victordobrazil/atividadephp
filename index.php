@@ -1,6 +1,19 @@
 <?php
 include_once "objetos/AlunoControler.php";
 
+session_start();
+
+//var_dump($_SESSION["aluno"]);
+//
+//die();
+
+if (!isset($_SESSION["aluno"])){
+    header("Location: login.php");
+    exit();
+}
+
+
+
 $controller = new AlunoControler();
 $alunos = $controller->index();
 global $alunos;

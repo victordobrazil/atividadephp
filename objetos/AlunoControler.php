@@ -139,6 +139,11 @@ class AlunoControler{
 
         return false;
     }
+    public function login($login,$senha){
+        $this->aluno->login = $login;
+        $this->aluno->senha = $senha;
+        $this->aluno->login();
 
+    }
 
 }

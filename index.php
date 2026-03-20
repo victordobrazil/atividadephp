@@ -1,8 +1,8 @@
 <?php
 
-include_once "objetos/AlunoControler.php";
+include_once "objetos/produtoControler.php";
 
-$controller = new AlunoControler();
+$controller = new ProdutoControler();
 $alunos = $controller->index();
 global $alunos;
 

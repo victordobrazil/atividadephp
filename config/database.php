@@ -7,7 +7,7 @@ Class Database{
 
     private $senha = "123456";
 
-    private $banco = "atividadephp";
+    private $banco = "senac";
 
     private $con;
 
